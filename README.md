@@ -26,7 +26,7 @@ A modern web application that uses AI to generate concise summaries of lengthy t
 ### Installation
 
 1. **Create and setup project:**
-```bash
+
 npx create-next-app@latest summify-ai --typescript --tailwind --eslint
 cd summify-ai
 npm install openai
