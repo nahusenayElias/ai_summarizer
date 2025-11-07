@@ -24,15 +24,16 @@ export default function Home() {
         body: JSON.stringify({ content: input }),
       });
       
+      const data = await response.json();
+      
       if (!response.ok) {
-        throw new Error('Failed to generate summary');
+        throw new Error(data.error || data.details || 'Failed to generate summary');
       }
       
-      const data = await response.json();
       setSummary(data.summary);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error:', error);
-      setError('Failed to generate summary. Please try again.');
+      setError(error.message || 'Failed to generate summary. Please try again.');
     } finally {
       setLoading(false);
     }
